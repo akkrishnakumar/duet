@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
-import OutlinedBtn from './OutlinedButton'
+import OutlinedBtn from '../../../../Components/OutlinedButton/OutlinedButton'
 
 const GameControls = ({
   handleAllRight,
