@@ -14,30 +14,32 @@ const GameControls = ({
 }) => {
 
   return (
-    <Grid container direction="column" alignItems="center">
-      <OutlinedBtn
-        handleOnClick={handleAllRight}
-        handleDisabled={isAllRightDisabled}
-        text="Randomize"
-      />
+    <Grid item>
+      <Grid container direction="column" alignItems="center">
+        <OutlinedBtn
+          handleOnClick={handleAllRight}
+          handleDisabled={isAllRightDisabled}
+          text="Randomize"
+        />
 
-      <OutlinedBtn
-        handleOnClick={handleLeftToRight}
-        handleDisabled={isLeftToRightDisabled}
-        text="->"
-      />
+        <OutlinedBtn
+          handleOnClick={handleLeftToRight}
+          handleDisabled={isLeftToRightDisabled}
+          text="->"
+        />
 
-      <OutlinedBtn
-        handleOnClick={handleRightToLeft}
-        handleDisabled={isRightToLeftDisabled}
-        text="<-"
-      />
+        <OutlinedBtn
+          handleOnClick={handleRightToLeft}
+          handleDisabled={isRightToLeftDisabled}
+          text="<-"
+        />
 
-      <OutlinedBtn
-        handleOnClick={handleAllLeft}
-        handleDisabled={isAllLeftDisabled}
-        text="Reset"
-      />
+        <OutlinedBtn
+          handleOnClick={handleAllLeft}
+          handleDisabled={isAllLeftDisabled}
+          text="Reset"
+        />
+      </Grid>
     </Grid>
   )
 }

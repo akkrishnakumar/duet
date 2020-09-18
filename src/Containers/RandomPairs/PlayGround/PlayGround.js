@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
 import theme from '../../../UI/SiteTheme';
 import { pairsFrom, singleFrom } from './UniquePairs';
 import GameControls from './GameControls/GameControls';
+import TeamList from './TeamList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,14 +19,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.5, 0),
   },
 }));
-
-// function not(a, b) {
-//   return a.filter((value) => b.indexOf(value) === -1);
-// }
-
-// function intersection(a, b) {
-//   return a.filter((value) => b.indexOf(value) !== -1);
-// }
 
 const addOrRemove = (master, candidate) => {
   const currIndex = master.indexOf(candidate);
@@ -88,47 +75,33 @@ export default function PlayGround() {
   const isChecked = (value, side) =>
     side === LEFT ? leftChecked.indexOf(value) !== -1 : rightChecked.indexOf(value) !== -1
 
-  const customList = (items, side) => (
-    <Paper className={classes.paper}>
-      <List dense component="div" role="list">
-        {items.map((value) => {
-          const labelId = `transfer-list-item-${value}-label`;
-
-          return (
-            <ListItem key={value} role="listitem" button onClick={handleCheckedToggle(value, side)}>
-              <ListItemIcon>
-                <Checkbox
-                  checked={isChecked(value, side)}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText id={labelId} primary={`${value}`} />
-            </ListItem>
-          );
-        })}
-        <ListItem />
-      </List>
-    </Paper>
-  );
-
   return (
     <Grid container spacing={10} justify="center" alignItems="center" className={classes.root}>
-      <Grid item>{customList(itemsInLeft, LEFT)}</Grid>
-      <Grid item>
-        <GameControls
-          handleAllLeft={handleAllLeft}
-          handleAllRight={handleAllRight}
-          handleLeftToRight={handleLeftToRight}
-          handleRightToLeft={handleRightToLeft}
-          isAllRightDisabled={itemsInLeft.length === 0}
-          isAllLeftDisabled={itemsInRight.length === 0}
-          isLeftToRightDisabled={leftChecked.length < 2}
-          isRightToLeftDisabled={rightChecked.length === 0}
-        />
-      </Grid>
-      <Grid item>{customList(itemsInRight, RIGHT)}</Grid>
+      <TeamList
+        items={itemsInLeft}
+        side={LEFT}
+        handleCheckedToggle={handleCheckedToggle}
+        handleIsChecked={isChecked}
+      />
+
+      <GameControls
+        handleAllLeft={handleAllLeft}
+        handleAllRight={handleAllRight}
+        handleLeftToRight={handleLeftToRight}
+        handleRightToLeft={handleRightToLeft}
+        isAllRightDisabled={itemsInLeft.length === 0}
+        isAllLeftDisabled={itemsInRight.length === 0}
+        isLeftToRightDisabled={leftChecked.length < 2}
+        isRightToLeftDisabled={rightChecked.length === 0}
+      />
+
+      <TeamList
+        items={itemsInRight}
+        side={RIGHT}
+        handleCheckedToggle={handleCheckedToggle}
+        handleIsChecked={isChecked}
+      />
     </Grid>
-  );
+  )
+
 }
