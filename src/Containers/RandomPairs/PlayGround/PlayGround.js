@@ -6,10 +6,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import theme from '../../../UI/SiteTheme';
 import { pairsFrom, singleFrom } from './UniquePairs';
+import GameControls from './GameControls/GameControls';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,48 +117,16 @@ export default function PlayGround() {
     <Grid container spacing={10} justify="center" alignItems="center" className={classes.root}>
       <Grid item>{customList(itemsInLeft, LEFT)}</Grid>
       <Grid item>
-        <Grid container direction="column" alignItems="center">
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleAllRight}
-            disabled={itemsInLeft.length === 0}
-            aria-label="move all right"
-          >
-            Randomize
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleLeftToRight}
-            disabled={leftChecked.length < 2}
-            aria-label="move selected right"
-          >
-            -&gt;
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleRightToLeft}
-            disabled={rightChecked.length === 0}
-            aria-label="move selected left"
-          >
-            &lt;-
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            className={classes.button}
-            onClick={handleAllLeft}
-            disabled={itemsInRight.length === 0}
-            aria-label="move all to right"
-          >
-            Reset
-          </Button>
-        </Grid>
+        <GameControls
+          handleAllLeft={handleAllLeft}
+          handleAllRight={handleAllRight}
+          handleLeftToRight={handleLeftToRight}
+          handleRightToLeft={handleRightToLeft}
+          isAllRightDisabled={itemsInLeft.length === 0}
+          isAllLeftDisabled={itemsInRight.length === 0}
+          isLeftToRightDisabled={leftChecked.length < 2}
+          isRightToLeftDisabled={rightChecked.length === 0}
+        />
       </Grid>
       <Grid item>{customList(itemsInRight, RIGHT)}</Grid>
     </Grid>
