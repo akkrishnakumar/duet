@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SignIn from './Components/SignIn/SignIn';
+import Duets from './Containers/Duets/Duets'
 
-function App() {
+export default function App() {
+
+  const loadComponent = () => {
+    if (sessionStorage.getItem('uID') !== '1') return <SignIn />
+    else return <Duets />
+  }
+
+  console.log('uid', sessionStorage.getItem('uID'))
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loadComponent()}
     </div>
-  );
-}
+  )
 
-export default App;
+}

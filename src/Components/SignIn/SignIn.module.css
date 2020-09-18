@@ -1,0 +1,18 @@
+.LeftPanel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.TagLine {
+    margin: 10px
+}
+
+.Logo {
+    height: 500px;
+    width: 450px;
+    display: flex;
+    flex-flow: column;
+}
+

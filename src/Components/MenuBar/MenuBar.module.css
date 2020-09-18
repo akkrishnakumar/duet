@@ -1,0 +1,8 @@
+.MenuBar {
+    margin: 10px;
+    padding: 5px 0;
+}
+
+.MenuBar Button {
+    color: inherit;
+}

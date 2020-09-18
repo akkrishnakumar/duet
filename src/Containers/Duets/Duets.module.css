@@ -1,0 +1,12 @@
+.Duets {
+    display: grid;
+    grid-template-rows:
+        minmax(min-content, 2.5rem)
+        max-content
+        auto;
+    height: 100vh;
+}
+
+.Main {
+    height: 80vh;
+}
