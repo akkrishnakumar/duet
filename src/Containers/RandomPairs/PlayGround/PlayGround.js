@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import theme from '../../../UI/SiteTheme';
@@ -32,7 +32,9 @@ const addOrRemove = (master, candidate) => {
   return newMaster
 }
 
-export default function PlayGround() {
+const PlayGround = ({
+  isAllPaired
+}) => {
   const classes = useStyles(theme);
   const LEFT = "left"
   const RIGHT = "right"
@@ -42,6 +44,10 @@ export default function PlayGround() {
   const [itemsInRight, setItemsInRight] = useState([]);
   const [leftChecked, setLeftChecked] = useState([])
   const [rightChecked, setRightChecked] = useState([])
+
+  useEffect(() => {
+    itemsInLeft.length === 0 ? isAllPaired(true) : isAllPaired(false)
+  })
 
   const handleCheckedToggle = (value, side = LEFT) =>
     _ => side === LEFT ?
@@ -105,3 +111,5 @@ export default function PlayGround() {
   )
 
 }
+
+export default PlayGround
