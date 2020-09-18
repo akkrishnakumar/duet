@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import theme from '../UI/SiteTheme'
 import Logo from '../UI/Logo/Logo';
 import MenuBar from './MenuBar/MenuBar';
-import { Avatar } from '@material-ui/core';
+import { Avatar, Button } from '@material-ui/core';
 import Akhil from '../assets/images/Akhil.jpeg'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +31,14 @@ const useStyles = makeStyles((theme) => ({
 const Header = (props) => {
   const classes = useStyles(theme)
 
+  const getUserName = () =>
+    JSON.parse(sessionStorage.getItem("user")).name
+
+  const loggedInUser = () =>
+    <div>
+      <Button style={{ color: "inherit" }}>Welcome, {getUserName()}</Button>
+    </div>
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -43,6 +51,7 @@ const Header = (props) => {
           </Typography>
           <div className={classes.menu}>
             <MenuBar edge="end" color="inherit" />
+            {loggedInUser()}
             <Avatar edge="end" alt="Akhil Krishnakumar" src={Akhil} />
           </div>
         </Toolbar>

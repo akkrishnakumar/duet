@@ -5,12 +5,10 @@ import Duets from './Containers/Duets/Duets'
 
 export default function App() {
 
-  const loadComponent = () => {
-    if (sessionStorage.getItem('uID') !== '1') return <SignIn />
-    else return <Duets />
-  }
+  const loadComponent = () =>
+    !sessionStorage.getItem('user') ? <SignIn /> : <Duets />
 
-  console.log('uid', sessionStorage.getItem('uID'))
+  console.log('uid', sessionStorage.getItem('user'))
 
   return (
     <div className="App">

@@ -7,7 +7,7 @@ const MenuBar = (props) => (
         <Button>Pairing</Button>
         <Button>Session Feedback</Button>
         <Button>Rewards Store</Button>
-    </nav >
+    </nav>
 )
 
 export default MenuBar

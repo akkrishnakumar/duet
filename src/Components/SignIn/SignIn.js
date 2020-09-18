@@ -66,7 +66,9 @@ export default function SignIn() {
 
     const login = (e) => {
         e.preventDefault()
-        sessionStorage.setItem('uID', '1')
+        uname === 'Professor' ?
+            sessionStorage.setItem('user', JSON.stringify({ id: '1', name: 'Professor' })) :
+            sessionStorage.setItem('user', JSON.stringify({ id: '2', name: 'Nairobi' }))
         window.location.reload()
     }
 
