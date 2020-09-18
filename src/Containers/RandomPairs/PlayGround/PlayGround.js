@@ -126,7 +126,7 @@ export default function PlayGround() {
             disabled={itemsInLeft.length === 0}
             aria-label="move all right"
           >
-            Let's Pair
+            Randomize
           </Button>
           <Button
             variant="outlined"
