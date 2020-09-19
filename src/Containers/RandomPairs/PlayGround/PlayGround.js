@@ -33,7 +33,7 @@ const addOrRemove = (master, candidate) => {
 }
 
 const PlayGround = ({
-  isAllPaired
+  allPaired
 }) => {
   const classes = useStyles(theme);
   const LEFT = "left"
@@ -46,8 +46,8 @@ const PlayGround = ({
   const [rightChecked, setRightChecked] = useState([])
 
   useEffect(() => {
-    itemsInLeft.length === 0 ? isAllPaired(true) : isAllPaired(false)
-  })
+    itemsInLeft.length === 0 ? allPaired(itemsInRight) : allPaired([])
+  }, [itemsInLeft, itemsInRight, allPaired])
 
   const handleCheckedToggle = (value, side = LEFT) =>
     _ => side === LEFT ?

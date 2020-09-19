@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper } from '@material-ui/core';
 import styles from './RandomPairs.module.css'
 import PlayGround from './PlayGround/PlayGround';
@@ -6,19 +6,29 @@ import OutlinedBtn from '../../Components/OutlinedButton/OutlinedButton';
 
 const RandomPairs = (props) => {
 
-    const [canPair, setCanPair] = useState(false)
+    const [pairs, setPairs] = useState([])
 
-    const onceAllPaired = isPaired => setCanPair(isPaired)
+    useEffect(() => {
+        console.log("Pairs", pairs)
+    }, [pairs])
+
+    const onAllMembersPaired = () => {
+        const user = JSON.parse(sessionStorage.getItem("user"))
+        console.log(user);
+        console.table(pairs)
+        console.log(pairs.filter(pair => pair.includes(user.name)))
+    }
 
     return (
         <div className={styles.RandomPairs}>
             <Paper className={styles.Paper} elevation={3}>
                 <PlayGround
-                    isAllPaired={onceAllPaired}
+                    allPaired={setPairs}
                 />
                 <OutlinedBtn
                     text="Let's Pair"
-                    handleDisabled={!canPair}
+                    handleDisabled={pairs.length === 0}
+                    handleOnClick={onAllMembersPaired}
                 />
             </Paper>
         </div>
