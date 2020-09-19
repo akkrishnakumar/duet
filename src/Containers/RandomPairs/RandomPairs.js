@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Paper } from '@material-ui/core';
 import styles from './RandomPairs.module.css'
 import PlayGround from './PlayGround/PlayGround';
 import OutlinedBtn from '../../Components/OutlinedButton/OutlinedButton';
+import { jsonToUser } from '../../Utils/JsonAdaptor';
+import { User } from '../../Models/User';
+import { decouple } from './PlayGround/UniquePairs';
 
 const RandomPairs = (props) => {
 
     const [pairs, setPairs] = useState([])
 
-    useEffect(() => {
-        console.log("Pairs", pairs)
-    }, [pairs])
+    const pairNamefrom = (pairs, uName) =>
+        pairs
+            .filter(pair => pair.includes(uName))
+            .flatMap(decouple)
+            .filter(pair => !pair.includes(uName))[0]
+
 
     const onAllMembersPaired = () => {
-        const user = JSON.parse(sessionStorage.getItem("user"))
-        console.log(user);
-        console.table(pairs)
-        console.log(pairs.filter(pair => pair.includes(user.name)))
+        const user = jsonToUser(JSON.parse(sessionStorage.getItem("user")))
+        const pairUser = new User(2, pairNamefrom(pairs, user.name))
+        user.setCurrentPairTo(pairUser)
+        sessionStorage.setItem("user", JSON.stringify(user))
     }
 
     return (
