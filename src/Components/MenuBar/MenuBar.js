@@ -1,13 +1,23 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { NavLink } from 'react-router-dom'
+import { Button } from '@material-ui/core';
+
 import styles from './MenuBar.module.css';
 
-const MenuBar = (props) => (
-    <nav className={styles.MenuBar}>
-        <Button>Pairing</Button>
-        <Button>Session Feedback</Button>
-        <Button>Rewards Store</Button>
-    </nav>
-)
+const MenuBar = (props) => {
+
+    const navLinkFrom = (path, text) =>
+        <NavLink to={"/".concat(path)}>
+            <Button>{text}</Button>
+        </NavLink>
+
+    return (
+        <nav className={styles.MenuBar}>
+            {navLinkFrom("pairing", "Pairing")}
+            {navLinkFrom("feedback", "Pairing FeedBack")}
+            {navLinkFrom("store", "Rewards Store")}
+        </nav>
+    )
+}
 
 export default MenuBar
