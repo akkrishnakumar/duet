@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Header from '../../Components/Header'
 import Footer from '../../Components/Footer/Footer'
 import RandomPairs from '../RandomPairs/RandomPairs'
@@ -12,9 +12,9 @@ class Duets extends Component {
             <div className={styles.Duets}>
                 <Header />
                 <main className={styles.Main}>
-                    <Route path="/pairing" >
-                        <RandomPairs></RandomPairs>
-                    </Route>
+                    <Switch>
+                        <Route path="/pairing" > <RandomPairs /> </Route>
+                    </Switch>
                 </main>
                 <Footer />
             </div>

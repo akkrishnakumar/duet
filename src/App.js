@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Redirect } from 'react-router-dom';
+import { BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
 import SignIn from './Components/SignIn/SignIn';
 import Duets from './Containers/Duets/Duets'
 
@@ -9,7 +9,7 @@ export default function App() {
   const loadComponent = () =>
     !sessionStorage.getItem('user') ?
       <Redirect to="login"></Redirect> :
-      <Redirect to="pairing"></Redirect>
+      <Redirect to="/pairing"></Redirect>
 
   console.log('uid', sessionStorage.getItem('user'))
 
@@ -17,8 +17,10 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         {loadComponent()}
-        <SignIn />
-        <Duets />
+        <Switch>
+          <Route path="/login"> <SignIn /> </Route>
+          <Route path="/"> <Duets /> </Route>
+        </Switch>
       </div>
     </BrowserRouter>
   )
