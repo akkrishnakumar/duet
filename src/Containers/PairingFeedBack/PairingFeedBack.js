@@ -1,13 +1,26 @@
-import React from 'react';
-import { Paper } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Paper, Tabs, Tab } from '@material-ui/core';
+import TabPanel from '../../Components/TabPanel/TabPanel';
+
 import styles from './PairingFeedBack.module.css'
 
 const PairingFeedBack = (props) => {
 
-    return (
-        <div className={styles.RandomPairs}>
-            <Paper className={styles.Paper} elevation={3}>
+    const [currTab, setCurrTab] = useState(0)
 
+    const handleChange = (_, newValue) => setCurrTab(newValue)
+
+    return (
+        <div className={styles.PairingFeedBack}>
+            <Paper className={styles.Paper} elevation={3}>
+                <Tabs
+                    value={currTab}
+                    onChange={handleChange}>
+                    <Tab label="Current Pairing" />
+                    <Tab label="Previous Pairings" />
+                </Tabs>
+                <TabPanel value={currTab} index={0}>Tab 1</TabPanel>
+                <TabPanel value={currTab} index={1}>Tab 2</TabPanel>
             </Paper>
         </div>
     )
