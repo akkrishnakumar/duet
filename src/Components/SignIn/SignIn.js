@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -63,6 +63,8 @@ export default function SignIn() {
     const [uname, setUname] = useState('')
     const [pass, setPass] = useState('')
 
+    const history = useHistory()
+
     const classes = useStyles();
 
     const login = (e) => {
@@ -70,86 +72,84 @@ export default function SignIn() {
         uname === 'Professor' ?
             sessionStorage.setItem('user', JSON.stringify({ id: '1', name: 'Professor' })) :
             sessionStorage.setItem('user', JSON.stringify({ id: '2', name: 'Nairobi' }))
-        window.location.reload()
+        history.push("/pairing")
     }
 
     return (
-        <Route path="/login">
-            <Grid container component="main" className={classes.root}>
-                <CssBaseline />
-                <Grid item xs={false} sm={4} md={7} className={styles.LeftPanel} >
-                    <div className={styles.Logo}>
-                        <LargeLogo />
-                        <Typography variant="h4" className={styles.TagLine}>
-                            Pair Programming made fun !
+        <Grid container component="main" className={classes.root}>
+            <CssBaseline />
+            <Grid item xs={false} sm={4} md={7} className={styles.LeftPanel} >
+                <div className={styles.Logo}>
+                    <LargeLogo />
+                    <Typography variant="h4" className={styles.TagLine}>
+                        Pair Programming made fun !
                     </Typography>
-                    </div>
-                </Grid>
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                    <div className={classes.paper}>
-                        <Avatar className={classes.avatar}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                    </Typography>
-                        <form className={classes.form} noValidate onSubmit={login}>
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Username"
-                                autoComplete="email"
-                                autoFocus
-                                value={uname}
-                                onChange={(e) => setUname(e.target.value)}
-                            />
-                            <TextField
-                                variant="outlined"
-                                margin="normal"
-                                required
-                                fullWidth
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                value={pass}
-                                onChange={(e) => setPass(e.target.value)}
-                            />
-                            <FormControlLabel
-                                control={<Checkbox value="remember" color="primary" />}
-                                label="Remember me"
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className={classes.submit}
-                                onClick={login}
-                            >Sign In
-                        </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
-                                </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link href="#" variant="body2">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
-                            <Box mt={5}>
-                                <Copyright />
-                            </Box>
-                        </form>
-                    </div>
-                </Grid>
+                </div>
             </Grid>
-        </Route>
-    );
+            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                    <form className={classes.form} noValidate onSubmit={login}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Username"
+                            autoComplete="email"
+                            autoFocus
+                            value={uname}
+                            onChange={(e) => setUname(e.target.value)}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            value={pass}
+                            onChange={(e) => setPass(e.target.value)}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={login}
+                        >Sign In
+                        </Button>
+                        <Grid container>
+                            <Grid item xs>
+                                <Link href="#" variant="body2">
+                                    Forgot password?
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link href="#" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                        <Box mt={5}>
+                            <Copyright />
+                        </Box>
+                    </form>
+                </div>
+            </Grid>
+        </Grid>
+    )
 }
