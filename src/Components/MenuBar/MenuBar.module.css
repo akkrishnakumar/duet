@@ -3,6 +3,23 @@
     padding: 5px 0;
 }
 
-Button {
-    color: inherit;
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.Selected {
+    font-weight: 500;
+}
+
+.Selected > button {
+    background-color: #7280ce;
+}
+
+.Selected > button:hover {
+    background-color: #606fc7;
+}
+
+.SiteNavigation > span {
+    color: white;
 }

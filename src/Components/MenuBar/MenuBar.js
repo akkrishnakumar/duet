@@ -7,8 +7,14 @@ import styles from './MenuBar.module.css';
 const MenuBar = (props) => {
 
     const navLinkFrom = (path, text) =>
-        <NavLink to={"/".concat(path)}>
-            <Button>{text}</Button>
+        <NavLink
+            to={"/".concat(path)}
+            activeClassName={styles.Selected}
+        >
+            <Button
+                className={styles.SiteNavigation}
+            >{text}
+            </Button>
         </NavLink>
 
     return (
