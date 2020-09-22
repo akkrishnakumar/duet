@@ -1,13 +1,13 @@
 import React from 'react'
 import Ratings from '../../../Components/Ratings/Ratings'
 import { loggedInUser } from '../../../Utils/UserUtils'
+import { Typography } from '@material-ui/core'
 
 import styles from './CurrentFeedBack.module.css'
-import { Typography } from '@material-ui/core'
 
 const CurrentFeedBack = (props) => {
 
-  const currPairName = loggedInUser()?.currentPair?.name ?? ""
+  const currPairName = loggedInUser()?.currentPair?.name() ?? ""
 
   const ratings = pair =>
     pair === "" ?

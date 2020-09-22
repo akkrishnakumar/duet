@@ -3,9 +3,10 @@ import { Paper } from '@material-ui/core';
 import styles from './RandomPairs.module.css'
 import PlayGround from './PlayGround/PlayGround';
 import OutlinedBtn from '../../Components/OutlinedButton/OutlinedButton';
-import { jsonToUser } from '../../Utils/JsonAdaptor';
 import { User } from '../../Models/User';
 import { decouple } from './PlayGround/UniquePairs';
+import { SomePair } from '../../Models/Pair';
+import { loggedInUser } from '../../Utils/UserUtils';
 
 const RandomPairs = (props) => {
 
@@ -19,9 +20,9 @@ const RandomPairs = (props) => {
 
 
     const onAllMembersPaired = () => {
-        const user = jsonToUser(JSON.parse(sessionStorage.getItem("user")))
-        const pairUser = new User(2, pairNamefrom(pairs, user.name))
-        user.setCurrentPairTo(pairUser)
+        const user = loggedInUser()
+        const pair = new SomePair(new User(3, pairNamefrom(pairs, user.name)))
+        user.setCurrentPairTo(pair)
         sessionStorage.setItem("user", JSON.stringify(user))
     }
 

@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './SignIn.module.css';
 import LargeLogo from '../../UI/LargeLogo/LargeLogo';
+import { User } from '../../Models/User';
 
 function Copyright() {
     return (
@@ -67,11 +68,17 @@ export default function SignIn() {
 
     const classes = useStyles();
 
+    const professor =
+        JSON.stringify(new User(1, 'Professor'))
+
+    const nairobi =
+        JSON.stringify(new User(2, 'Nairobi'))
+
     const login = (e) => {
         e.preventDefault()
         uname === 'Professor' ?
-            sessionStorage.setItem('user', JSON.stringify({ id: '1', name: 'Professor' })) :
-            sessionStorage.setItem('user', JSON.stringify({ id: '2', name: 'Nairobi' }))
+            sessionStorage.setItem('user', professor) :
+            sessionStorage.setItem('user', nairobi)
         history.push("/pairing")
     }
 

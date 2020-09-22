@@ -1,10 +1,12 @@
+import { Pair, NoPair } from "./Pair"
+
 export class User {
 
   readonly id: number
   readonly name: string
 
-  currentPair: User | undefined = undefined
-  previousPairs: Array<User> = []
+  currentPair: Pair = NoPair
+  previousPairs: Array<Pair> = []
 
   constructor(
     id: number,
@@ -14,16 +16,14 @@ export class User {
     this.name = name
   }
 
-  setCurrentPairTo = (pair: User) => {
+  setCurrentPairTo = (pair: Pair) => {
     this.addCurrentToPreviousPair()
     this.currentPair = pair
   }
 
   addCurrentToPreviousPair = () => {
-    console.log(this.currentPair)
-    if (this.currentPair) {
+    if (this.currentPair)
       this.previousPairs.push(this.currentPair)
-    }
   }
 
 }
