@@ -11,13 +11,12 @@ export default function App() {
       <Redirect to="login"></Redirect> :
       <Duets />
 
-  console.log('uid', sessionStorage.getItem('user'))
 
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/login"> <SignIn /> </Route>
+          <Route path="/login" exact> <SignIn /> </Route>
           <Route path="/"> {authenticate()} </Route>
         </Switch>
       </div>

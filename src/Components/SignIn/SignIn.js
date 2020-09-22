@@ -63,10 +63,8 @@ export default function SignIn() {
 
     const [uname, setUname] = useState('')
     const [pass, setPass] = useState('')
-
     const history = useHistory()
-
-    const classes = useStyles();
+    const classes = useStyles()
 
     const professor =
         JSON.stringify(new User(1, 'Professor'))
@@ -79,7 +77,7 @@ export default function SignIn() {
         uname === 'Professor' ?
             sessionStorage.setItem('user', professor) :
             sessionStorage.setItem('user', nairobi)
-        history.push("/pairing")
+        history.replace("pairing")
     }
 
     return (

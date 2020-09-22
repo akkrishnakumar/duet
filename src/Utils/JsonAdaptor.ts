@@ -9,7 +9,7 @@ export const jsonToUser = (jsonObj: any): User => {
 }
 
 const jsonToPair = (json: any): Pair =>
-  json ?
+  json && json.user ?
     new SomePair(jsonToUser(json.user), json.rating) :
     new NoPair()
 

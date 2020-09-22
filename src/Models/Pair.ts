@@ -1,6 +1,8 @@
 import { User } from "./User";
 
-export interface Pair { }
+export interface Pair {
+  name: () => string
+}
 
 export class SomePair implements Pair {
 
@@ -20,5 +22,5 @@ export class SomePair implements Pair {
 }
 
 export class NoPair implements Pair {
-  name = () => " "
+  name = () => ""
 }

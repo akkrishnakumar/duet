@@ -5,7 +5,7 @@ export class User {
   readonly id: number
   readonly name: string
 
-  currentPair: Pair = NoPair
+  currentPair: Pair = new NoPair()
   previousPairs: Array<Pair> = []
 
   constructor(
