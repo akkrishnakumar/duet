@@ -1,32 +1,32 @@
 import React from 'react'
-import { Rating } from '@material-ui/core'
+import Rating from '@material-ui/lab/Rating'
 import {
-  SentimentDissatisfiedIcon, SentimentVeryDissatisfiedIcon,
-  SentimentSatisfiedIcon, SentimentVerySatisfiedIcon,
-  SentimentSatisfiedAltIcon
+  SentimentDissatisfied, SentimentVeryDissatisfied,
+  SentimentSatisfied, SentimentVerySatisfied,
+  SentimentSatisfiedAlt
 } from '@material-ui/icons'
 
 const Ratings = (props) => {
 
   const customIcons = {
     1: {
-      icon: <SentimentVeryDissatisfiedIcon />,
+      icon: <SentimentVeryDissatisfied />,
       label: 'Very Dissatisfied',
     },
     2: {
-      icon: <SentimentDissatisfiedIcon />,
+      icon: <SentimentDissatisfied />,
       label: 'Dissatisfied',
     },
     3: {
-      icon: <SentimentSatisfiedIcon />,
+      icon: <SentimentSatisfied />,
       label: 'Neutral',
     },
     4: {
-      icon: <SentimentSatisfiedAltIcon />,
+      icon: <SentimentSatisfiedAlt />,
       label: 'Satisfied',
     },
     5: {
-      icon: <SentimentVerySatisfiedIcon />,
+      icon: <SentimentVerySatisfied />,
       label: 'Very Satisfied',
     },
   };

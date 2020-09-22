@@ -1,6 +1,10 @@
-
 .FeedBack {
-  padding: 20px;
-  height: 100%;
-  box-sizing: border-box;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.CurrentFeedback td {
+    padding: 10px;
+    text-align: start;
 }
