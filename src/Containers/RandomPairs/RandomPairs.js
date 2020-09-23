@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { Paper } from '@material-ui/core';
-import styles from './RandomPairs.module.css'
 import PlayGround from './PlayGround/PlayGround';
 import OutlinedBtn from '../../Components/OutlinedButton/OutlinedButton';
 import { User } from '../../Models/User';
 import { decouple } from './PlayGround/UniquePairs';
 import { SomePair } from '../../Models/Pair';
 import { loggedInUser } from '../../Utils/UserUtils';
+import SuccessAlert from '../../Components/Alert/SuccessAlert';
+
+import styles from './RandomPairs.module.css'
 
 const RandomPairs = (props) => {
 
     const [pairs, setPairs] = useState([])
+    const [snackBarOpen, setSnackBarOpen] = useState(false)
+
+    const successMessage =
+        <SuccessAlert
+            open={snackBarOpen}
+            onClose={() => setSnackBarOpen(false)}>
+            Let's Pair !!
+        </SuccessAlert>
 
     const pairNamefrom = (pairs, uName) =>
         pairs
@@ -24,7 +34,8 @@ const RandomPairs = (props) => {
         const pair = new SomePair(new User(3, pairNamefrom(pairs, user.name)))
         if (pair.name() !== "")
             user.setCurrentPairTo(pair)
-            sessionStorage.setItem("user", JSON.stringify(user))
+        sessionStorage.setItem("user", JSON.stringify(user))
+        setSnackBarOpen(true)
     }
 
     return (
@@ -39,6 +50,7 @@ const RandomPairs = (props) => {
                     handleOnClick={onAllMembersPaired}
                 />
             </Paper>
+            {successMessage}
         </div>
     )
 }
