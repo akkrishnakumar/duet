@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Paper, Tabs, Tab } from '@material-ui/core';
 import TabPanel from '../../Components/TabPanel/TabPanel';
+import CurrentFeedBack from './CurrentFeedBack/CurrentFeedBack';
+import PreviousFeedBack from './PreviousFeedBack/PreviousFeedBack';
 
 import styles from './PairingFeedBack.module.css'
-import CurrentFeedBack from './CurrentFeedBack/CurrentFeedBack';
 
 const PairingFeedBack = (props) => {
 
@@ -23,7 +24,9 @@ const PairingFeedBack = (props) => {
                 <TabPanel value={currTab} index={0}>
                     <CurrentFeedBack />
                 </TabPanel>
-                <TabPanel value={currTab} index={1}>Tab 2</TabPanel>
+                <TabPanel value={currTab} index={1}>
+                    <PreviousFeedBack />
+                </TabPanel>
             </Paper>
         </div>
     )
