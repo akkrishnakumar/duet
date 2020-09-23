@@ -4,12 +4,21 @@ import { loggedInUser } from '../../../Utils/UserUtils'
 import { Typography, Button } from '@material-ui/core'
 
 import styles from './CurrentFeedBack.module.css'
+import SuccessAlert from '../../../Components/Alert/SuccessAlert'
 
 const CurrentFeedBack = (props) => {
 
   const [rating, setRating] = useState(3)
+  const [ratingsSubmitted, setRatingsSubmitted] = useState(false)
   const user = loggedInUser()
   const currPair = user?.currentPair
+
+  const successMessage =
+    <SuccessAlert
+      open={ratingsSubmitted}
+      onClose={() => setRatingsSubmitted(false)}>
+      Pairing Session rated !!! Good Job !!!
+    </SuccessAlert>
 
   const handleRating = (event, newRating) => {
     event.preventDefault()
@@ -20,6 +29,7 @@ const CurrentFeedBack = (props) => {
     e.preventDefault()
     user.rateCurrentPair(rating)
     sessionStorage.setItem("user", JSON.stringify(user))
+    setRatingsSubmitted(true)
   }
 
   const ratings = pair =>
@@ -53,8 +63,8 @@ const CurrentFeedBack = (props) => {
             </tr>
           </tbody>
         </table>
+        {successMessage}
       </div>
-
 
   return ratings(currPair)
 
