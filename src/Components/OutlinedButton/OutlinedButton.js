@@ -24,7 +24,8 @@ const OutlinedBtn = ({
 
   return (
     <Button
-      variant="outlined"
+      variant="contained"
+      color="primary"
       size="small"
       className={classes.button}
       onClick={handleOnClick}
