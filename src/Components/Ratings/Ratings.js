@@ -6,7 +6,9 @@ import {
   SentimentSatisfiedAlt
 } from '@material-ui/icons'
 
-const Ratings = (props) => {
+const Ratings = ({
+  rating,
+}) => {
 
   const customIcons = {
     1: {
@@ -37,7 +39,7 @@ const Ratings = (props) => {
   return (
     <Rating
       name="customized-icons"
-      defaultValue={2}
+      defaultValue={rating}
       getLabelText={value => customIcons[value].label}
       IconContainerComponent={IconContainer}
     />
