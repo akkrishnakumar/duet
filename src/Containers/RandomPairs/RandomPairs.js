@@ -22,8 +22,9 @@ const RandomPairs = (props) => {
     const onAllMembersPaired = () => {
         const user = loggedInUser()
         const pair = new SomePair(new User(3, pairNamefrom(pairs, user.name)))
-        user.setCurrentPairTo(pair)
-        sessionStorage.setItem("user", JSON.stringify(user))
+        if (pair.name() !== "")
+            user.setCurrentPairTo(pair)
+            sessionStorage.setItem("user", JSON.stringify(user))
     }
 
     return (

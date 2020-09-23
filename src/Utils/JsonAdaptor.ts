@@ -15,5 +15,5 @@ const jsonToPair = (json: any): Pair =>
 
 const jsonToPairs = (jsonArray: any): Array<Pair> =>
   jsonArray?.length > 0 ?
-    [...jsonArray].map(jsonToPair) :
+    [...jsonArray].map(jsonToPair).filter(pair => pair?.name() !== "" ) :
     []
