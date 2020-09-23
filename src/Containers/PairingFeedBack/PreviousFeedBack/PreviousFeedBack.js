@@ -32,7 +32,7 @@ const PreviousFeedBack = (props) => {
 
   const ratingRows = () =>
     previousPairs?.length > 0 ?
-      previousPairs.map(tableRow) :
+      previousPairs.reverse().map(tableRow) :
       null
 
   const ratings = pairs =>
