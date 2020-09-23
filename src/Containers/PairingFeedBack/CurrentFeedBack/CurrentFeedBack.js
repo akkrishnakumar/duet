@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Ratings from '../../../Components/Ratings/Ratings'
 import { loggedInUser } from '../../../Utils/UserUtils'
-import { Typography } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 
 import styles from './CurrentFeedBack.module.css'
 
 const CurrentFeedBack = (props) => {
 
-  const currPair = loggedInUser()?.currentPair
+  const [rating, setRating] = useState(3)
+  const user = loggedInUser()
+  const currPair = user?.currentPair
+
+  const handleRating = (event, newRating) => {
+    event.preventDefault()
+    setRating(newRating)
+  }
+
+  const submitRating = e => {
+    e.preventDefault()
+    user.rateCurrentPair(rating)
+    sessionStorage.setItem("user", JSON.stringify(user))
+  }
 
   const ratings = pair =>
     pair.name() === "" ?
@@ -23,7 +36,19 @@ const CurrentFeedBack = (props) => {
               <td>Ratings</td>
               <td>
                 <Ratings
-                  rating={pair.rating} />
+                  rating={rating}
+                  onChange={handleRating}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={submitRating}>
+                  Submit
+                </Button>
               </td>
             </tr>
           </tbody>

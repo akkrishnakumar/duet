@@ -2,6 +2,7 @@ import { User } from "./User";
 
 export interface Pair {
   name: () => string
+  rate: (rating: number) => Pair
 }
 
 export class SomePair implements Pair {
@@ -19,8 +20,12 @@ export class SomePair implements Pair {
 
   name = () => this.user?.name ?? ""
 
+  rate = (rating: number) =>
+    new SomePair(this.user, rating)
+
 }
 
 export class NoPair implements Pair {
   name = () => ""
+  rate = (rating: number) => new NoPair()
 }

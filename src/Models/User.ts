@@ -26,4 +26,7 @@ export class User {
       this.previousPairs.push(this.currentPair)
   }
 
+  rateCurrentPair = (rating: number) =>
+    this.currentPair = this.currentPair.rate(rating)
+
 }
