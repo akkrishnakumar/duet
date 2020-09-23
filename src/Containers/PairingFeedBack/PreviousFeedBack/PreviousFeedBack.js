@@ -27,7 +27,7 @@ const PreviousFeedBack = (props) => {
     <TableRow>
       <TableCell>{index + 1}</TableCell>
       <TableCell>{pair.name()}</TableCell>
-      <TableCell><Ratings rating={pair.rating} /></TableCell>
+      <TableCell><Ratings rating={pair.rating} readOnly /></TableCell>
     </TableRow>
 
   const ratingRows = () =>

@@ -8,7 +8,8 @@ import {
 
 const Ratings = ({
   rating,
-  onChange
+  onChange,
+  ...others
 }) => {
 
   const customIcons = {
@@ -44,6 +45,7 @@ const Ratings = ({
       getLabelText={value => customIcons[value].label}
       IconContainerComponent={IconContainer}
       onChange={onChange}
+      {...others}
     />
   )
 }
