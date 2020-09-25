@@ -24,7 +24,7 @@ const PreviousFeedBack = (props) => {
   const previousPairs = loggedInUser()?.previousPairs
 
   const tableRow = (pair, index) =>
-    <TableRow>
+    <TableRow key={index}>
       <TableCell>{index + 1}</TableCell>
       <TableCell>{pair.name()}</TableCell>
       <TableCell><Ratings rating={pair.rating} readOnly /></TableCell>
