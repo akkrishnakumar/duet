@@ -14,8 +14,8 @@ class Duets extends Component {
                 <Header />
                 <main className={styles.Main}>
                     <Switch>
-                        <Route path="/pairing" > <RandomPairs /> </Route>
-                        <Route path="/feedback"> <PairingFeedBack /> </Route>
+                        <Route path="/pairing"><RandomPairs /></Route>
+                        <Route path="/feedback"><PairingFeedBack /></Route>
                     </Switch>
                 </main>
                 <Footer />

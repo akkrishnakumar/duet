@@ -77,7 +77,7 @@ export default function SignIn() {
         uname === 'Professor' ?
             sessionStorage.setItem('user', professor) :
             sessionStorage.setItem('user', nairobi)
-        history.replace("pairing")
+        history.push("pairing")
     }
 
     return (
